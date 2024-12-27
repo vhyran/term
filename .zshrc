@@ -1,8 +1,4 @@
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-## Added by Zinit's installer
+# Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
     print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
     command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
@@ -16,8 +12,7 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
 # Adding Prompt
-zinit ice depth=1; zinit light romkatv/powerlevel10k
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+eval "$(starship init zsh)"
 
 # Add in zsh plugins
 zinit light zsh-users/zsh-syntax-highlighting
@@ -33,9 +28,11 @@ zinit light MichaelAquilina/zsh-autoswitch-virtualenv
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
 zinit snippet OMZP::archlinux
-zinit snippet OMZP::aws
+zinit snippet OMZP::docker
+zinit snippet OMZP::docker-compose
 zinit snippet OMZP::kubectl
 zinit snippet OMZP::kubectx
+zinit snippet OMZP::aws
 zinit snippet OMZP::command-not-found
 
 # Load completions
@@ -43,7 +40,6 @@ autoload -Uz compinit && compinit
 zinit cdreplay -q
 
 # Keybindings
-bindkey -e
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
 bindkey '^[w' kill-region
@@ -72,8 +68,10 @@ setopt complete_in_word
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa --tree --only-dirs --level=2 $realpath'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+zstyle ':completion:*:*:docker:*' option-stacking yes
+zstyle ':completion:*:*:docker-*:*' option-stacking yes
 
 # Aliases
 alias ..="cd .."
@@ -82,15 +80,15 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
 
-alias update="Updates --print-updates && Updates --update-system"
-alias clean="sudo pacman -Scc --noconfirm && paru -Sc --noconfirm && yay -Sc --noconfirm"
+alias update="Updates --print-updates && Updates --update-system && clean"
+alias clean="sudo pacman -Scc --noconfirm && yay -Sc --noconfirm"
 
-alias h='bpytop'
-alias f='ranger'
+alias h='htop'
+alias f='yazi'
 alias z='zathura'
 alias c='bat --style=plain --theme="Catppuccin Mocha"'
 alias v='nvim'
-alias s='spotify_player'
+alias m='mocp'
 alias cl="clear"
 alias q='exit'
 
@@ -102,8 +100,7 @@ alias wget="wget -c"
 alias fs="df --si"
 alias zshrc="v $HOME/.zshrc"
 alias zed='zeditor'
-alias ani='ani-cli'
-alias manga='mangal'
+alias ani='ani-cli --dub'
 
 # Shell integrations
 eval "$(fzf --zsh)"
@@ -115,3 +112,6 @@ export FZF_DEFAULT_OPTS=" \
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
 
+# Source
+# Adding in the catppuccino theme
+source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
