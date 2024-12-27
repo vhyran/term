@@ -37,7 +37,6 @@ return {
     local lspkind = require("lspkind")
     require("luasnip.loaders.from_vscode").lazy_load()
 
-    -- Helper function to check if there's a word before the cursor
     local has_words_before = function()
       local line, col = unpack(vim.api.nvim_win_get_cursor(0))
       return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
@@ -86,17 +85,9 @@ return {
         { name = "buffer" },
         { name = "path" },
       }),
-      window = {
-        completion = cmp.config.window.bordered({
-          winhighlight = "Normal:Normal,FloatBorder:FloatBorder,Search:None",
-        }),
-        documentation = cmp.config.window.bordered({
-          winhighlight = "Normal:Normal,FloatBorder:FloatBorder,Search:None",
-        }),
-      },
       formatting = {
         format = lspkind.cmp_format({
-          maxhight = 5,
+          maxheight = 5,
           maxwidth = 50,
           ellipsis_char = "...",
         }),
