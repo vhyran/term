@@ -3,14 +3,9 @@
 ## Showcase  
 Here’s a preview of the terminal setup in action:  
 
-<tr>
-  <td><img src="./images/01.png" alt="Terminal Showcase 1" width="40%" /></td>
-  <td><img src="./images/02.png" alt="Terminal Showcase 2" width="40%" /></td>
-</tr>
-<tr>
-  <td><img src="./images/03.png" alt="Terminal Showcase 3" width="40%" /></td>
-  <td><img src="./images/04.png" alt="Terminal Showcase 4" width="40%" /></td>
-</tr>
+| ![Terminal Showcase 1](./images/01.png) |![Terminal Showcase 2](./images/02.png) |  
+|-----------------------------------------|-----------------------------------------|  
+| ![Terminal Showcase 3](./images/03.png) | ![Terminal Showcase 4](./images/04.png) |  
 
 ## Requirements  
 Before setting up this terminal configuration, make sure the following tools are installed:  
