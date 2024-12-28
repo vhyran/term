@@ -12,5 +12,7 @@ Before setting up this terminal configuration, make sure the following tools are
 
 - **Kitty** (Terminal emulator)  
 - **Neovim (nvim)** (Text editor)  
-- **Zsh** (Shell) - zoxide, fzf  
+- **Zsh** (Shell) 
+- **Zoxide** (Shell Intigration)
+- **Fzf** (Shell Intigration)
 - **Starship Prompt** (Cross-shell prompt)  
