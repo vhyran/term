@@ -16,3 +16,5 @@ Before setting up this terminal configuration, make sure the following tools are
 - **Zoxide** (Shell Intigration)
 - **Fzf** (Shell Intigration)
 - **Starship Prompt** (Cross-shell prompt)  
+
+## Info
